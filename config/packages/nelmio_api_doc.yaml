@@ -1,0 +1,20 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: TUVALUM Product API
+            description: Access tuvalum main product catalog
+            version: 0.8.0
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+                    description: 'Authorization: Bearer {jwt}'
+                    name: Authorization
+        security:
+            - Bearer: []
+
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/api(?!/doc$) # Accepts routes under /api except /api/doc

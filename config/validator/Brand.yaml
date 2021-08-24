@@ -1,7 +1,5 @@
 App\Domain\Brand\Create\CreateBrandCommand:
     properties:
-        uuid:
-            - NotBlank: ~
 
 App\Domain\Brand\Find\FindBrandsQuery:
     properties:

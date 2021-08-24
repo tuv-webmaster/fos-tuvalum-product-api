@@ -7,9 +7,16 @@ namespace App\Shared\Domain\Translation;
 class TranslationCollectionDto implements \Iterator
 {
     /**
+     * @var TranslationDto[]|iterable
+     */
+    private $translations;
+
+    /**
      * @param TranslationDto[] $translations
      */
-    public function __construct(private iterable $translations){}
+    public function __construct(iterable $translations){
+        $this->translations = $translations;
+    }
 
     /**
      * @param TranslationDto[] $translations

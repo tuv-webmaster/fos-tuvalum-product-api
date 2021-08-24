@@ -5,9 +5,15 @@ namespace App\Shared\Domain\Translation;
 
 class LocaleDto
 {
-    public function __construct(private string $locale)
+    /**
+     * @var string
+     */
+    private $locale;
+
+    public function __construct(string $locale)
     {
 
+        $this->locale = $locale;
     }
 
     /**

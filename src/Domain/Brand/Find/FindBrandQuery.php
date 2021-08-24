@@ -4,9 +4,15 @@ namespace App\Domain\Brand\Find;
 
 class FindBrandQuery
 {
-    public function __construct(private string $uuid)
+    /**
+     * @var string
+     */
+    private $uuid;
+
+    public function __construct(string $uuid)
     {
 
+        $this->uuid = $uuid;
     }
 
     /**

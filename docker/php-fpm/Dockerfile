@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-alpine AS phpbase
+FROM php:7.4-fpm-alpine AS phpbase
 
 RUN apk update \
     && apk add  --no-cache \

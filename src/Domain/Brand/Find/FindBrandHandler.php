@@ -2,14 +2,14 @@
 
 namespace App\Domain\Brand\Find;
 
-use App\Domain\Brand\OutputBrandDto;
+use App\Domain\Brand\BrandDto;
 use App\Infrastructure\Repository\BrandRepository;
 use AutoMapperPlus\AutoMapperInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class FindBrandHandler
 {
-    public function __construct(private BrandRepository $brandRepository, private AutoMapperInterface $mapper)
+    public function __construct(BrandRepository $brandRepository, AutoMapperInterface $mapper)
     {
 
     }
@@ -19,11 +19,11 @@ class FindBrandHandler
         // var_dump($findBrandsQuery);
         $brand = $this->brandRepository->findOneBy(['uuid' => $findBrandsQuery->getUuid()]);
 
-        if(true === empty($brand)) {
+        if (true === empty($brand)) {
             return;
         }
         // echo get_class($brand); die();
-        $brandDto = $this->mapper->map($brand, OutputBrandDto::class);
+        $brandDto = $this->mapper->map($brand, BrandDto::class);
 
         return $brandDto;
     }

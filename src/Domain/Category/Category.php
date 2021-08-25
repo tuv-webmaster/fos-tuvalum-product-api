@@ -12,7 +12,7 @@ use Ramsey\Uuid\Doctrine\UuidGenerator;
 /**
  * Entity Category.
  *
- * @ORM\Table("e_category")
+ * @ORM\Table("category")
  * @ORM\Entity(repositoryClass="App\Infrastructure\Repository\CategoryRepository")
  */
 class Category implements CategoryInterface

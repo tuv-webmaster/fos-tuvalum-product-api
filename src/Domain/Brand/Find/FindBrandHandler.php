@@ -5,13 +5,22 @@ namespace App\Domain\Brand\Find;
 use App\Domain\Brand\BrandDto;
 use App\Infrastructure\Repository\BrandRepository;
 use AutoMapperPlus\AutoMapperInterface;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class FindBrandHandler
 {
+    /**
+     * @var BrandRepository
+     */
+    private $brandRepository;
+    /**
+     * @var AutoMapperInterface
+     */
+    private $mapper;
+
     public function __construct(BrandRepository $brandRepository, AutoMapperInterface $mapper)
     {
-
+        $this->brandRepository = $brandRepository;
+        $this->mapper = $mapper;
     }
 
     public function __invoke(FindBrandQuery $findBrandsQuery)

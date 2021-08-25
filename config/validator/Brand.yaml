@@ -1,5 +1,19 @@
 App\Domain\Brand\Create\CreateBrandCommand:
     properties:
+        name:
+            - NotBlank: ~
+        url:
+            - Valid: ~
+        slogan:
+            - Valid: ~
+        description:
+            - Valid: ~
+        shortDescription:
+            - Valid: ~
+        important:
+            - Valid: ~
+        position:
+            - Valid: ~
 
 App\Domain\Brand\Find\FindBrandsQuery:
     properties:

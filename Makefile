@@ -58,6 +58,9 @@ ssh-php:
 ssh-nginx:
 	docker-compose exec nginx /bin/sh
 
+ssh-mysql:
+	docker-compose exec mysql /bin/sh
+
 metrics:
 	docker-compose run --rm php-fpm vendor/bin/phpmetrics --junit=./tests/_output/junit.xml --report-html=tests/_output/phpmetrics --exclude=bin,docker,build,templates,tests,translations,var,DataFixtures,vendor .
 

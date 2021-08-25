@@ -21,7 +21,7 @@ class InputBrandDto
      * Translated brand access urls.
      *
      * @var TranslationDto[]
-     * @JMS\Type("array<TranslationDto>")
+     * @JMS\Type("array<App\Shared\Domain\Translation\TranslationDto>")
      * @OA\Property(
      *     type="array",
      *     @OA\Items(ref=@Model(type=TranslationDto::class))
@@ -33,7 +33,7 @@ class InputBrandDto
      * Translated slogans.
      *
      * @var TranslationDto[]
-     * @JMS\Type("array<TranslationDto>")
+     * @JMS\Type("array<App\Shared\Domain\Translation\TranslationDto>")
      * @OA\Property(
      *     type="array",
      *     @OA\Items(ref=@Model(type=TranslationDto::class))
@@ -45,7 +45,7 @@ class InputBrandDto
      * Translated descriptions.
      *
      * @var TranslationDto[]
-     * @JMS\Type("array<TranslationDto>")
+     * @JMS\Type("array<App\Shared\Domain\Translation\TranslationDto>")
      * @OA\Property(
      *     description="Translated brand description.",
      *     type="array",
@@ -58,7 +58,7 @@ class InputBrandDto
      * Translated brand short descriptions.
      *
      * @var TranslationDto[]
-     * @JMS\Type("array<TranslationDto>")
+     * @JMS\Type("array<App\Shared\Domain\Translation\TranslationDto>")
      * @OA\Property(
      *     type="array",
      *     @OA\Items(ref=@Model(type=TranslationDto::class))
@@ -70,7 +70,7 @@ class InputBrandDto
      * Brand importance by localization
      *
      * @var TranslationDto[]
-     * @JMS\Type("array<TranslationDto>")
+     * @JMS\Type("array<App\Shared\Domain\Translation\TranslationDto>")
      * @OA\Property(
      *     type="array",
      *     @OA\Items(ref=@Model(type=TranslationDto::class))
@@ -82,7 +82,7 @@ class InputBrandDto
      * Brand position by localization
      *
      * @var TranslationDto[]
-     * @JMS\Type("array<TranslationDto>")
+     * @JMS\Type("array<App\Shared\Domain\Translation\TranslationDto>")
      * @OA\Property(
      *     type="array",
      *     @OA\Items(ref=@Model(type=TranslationDto::class))
@@ -120,7 +120,7 @@ class InputBrandDto
     }
 
     /**
-     * @return TranslationCollectionDto
+     * @return TranslationDto[]
      */
     public function getSlogan(): iterable
     {
@@ -128,7 +128,7 @@ class InputBrandDto
     }
 
     /**
-     * @return TranslationCollectionDto
+     * @return TranslationDto[]
      */
     public function getDescription(): iterable
     {
@@ -136,7 +136,7 @@ class InputBrandDto
     }
 
     /**
-     * @return TranslationCollectionDto
+     * @return TranslationDto[]
      */
     public function getShortDescription(): iterable
     {
@@ -144,7 +144,7 @@ class InputBrandDto
     }
 
     /**
-     * @return TranslationCollectionDto
+     * @return TranslationDto[]
      */
     public function getImportant(): iterable
     {
@@ -152,7 +152,7 @@ class InputBrandDto
     }
 
     /**
-     * @return TranslationCollectionDto
+     * @return TranslationDto[]
      */
     public function getPosition(): iterable
     {

@@ -7,6 +7,7 @@ use App\Domain\Brand\BrandDto;
 
 use App\Application\Problems\NotFoundProblem;
 use App\Domain\Brand\Find\FindBrandQuery;
+use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -30,17 +31,26 @@ class GetBrandController extends AbstractController
      * @var ValidatorInterface
      */
     private $validator;
+    /**
+     * @var SerializerInterface
+     */
+    private $serializer;
 
     /**
      * @param MessageBusInterface $commandBus
      * @param ValidatorInterface $validator
      *
      */
-    public function __construct(MessageBusInterface $commandBus, ValidatorInterface $validator)
+    public function __construct(
+        MessageBusInterface $commandBus,
+        SerializerInterface $serializer,
+        ValidatorInterface $validator
+    )
     {
 
         $this->commandBus = $commandBus;
         $this->validator = $validator;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -81,9 +91,8 @@ class GetBrandController extends AbstractController
         $result = $handledStamp->getResult();
 
         if (false === empty($result)) {
-            return $result;
+            return new Response($this->serializer->serialize($result, 'json'), 200);
         }
-        throw new NotFoundHttpException();
         return new Response('Not found', 404);
     }
 }

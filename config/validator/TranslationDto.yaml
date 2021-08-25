@@ -1,0 +1,7 @@
+App\Shared\Domain\Translation\TranslationDto:
+    properties:
+        locale:
+            - NotBlank: ~
+            - Locale: ~
+        message:
+            - NotBlank: ~

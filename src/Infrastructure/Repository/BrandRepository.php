@@ -13,4 +13,10 @@ class BrandRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Brand::class);
     }
+
+    public function persist(Brand $brand)
+    {
+        $this->getEntityManager()->persist($brand);
+        $this->getEntityManager()->flush();
+    }
 }

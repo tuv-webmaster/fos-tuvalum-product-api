@@ -29,8 +29,6 @@ class Brand implements BrandInterface
      * @var UuidInterface
      *
      * @ORM\Column(type="uuid_binary", unique=true)
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class=UuidGenerator::class)
      */
     protected $uuid;
 

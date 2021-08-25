@@ -3,14 +3,12 @@
 namespace App\Domain\Brand\Create;
 
 use App\Domain\Brand\Brand;
-use App\Domain\Brand\BrandDto;
-use App\Domain\Brand\Find\FindBrandQuery;
 use App\Infrastructure\Repository\BrandRepository;
 use AutoMapperPlus\AutoMapperInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-class CreateBrandHandler
+class CreateBrandService
 {
     /**
      * @var BrandRepository
@@ -24,34 +22,27 @@ class CreateBrandHandler
      * @var MessageBusInterface
      */
     private $eventBus;
-    /**
-     * @var AutoMapperInterface
-     */
-    private $mapper;
-    /**
-     * @var CreateBrandService
-     */
-    private $brandService;
 
     public function __construct(
         BrandRepository $brandRepository,
         MessageBusInterface $eventBus,
-        AutoMapperInterface $mapper,
-        CreateBrandService $brandService,
         LoggerInterface $logger
     ) {
-
         $this->brandRepository = $brandRepository;
         $this->logger = $logger;
         $this->eventBus = $eventBus;
-        $this->mapper = $mapper;
-        $this->brandService = $brandService;
     }
 
-    public function __invoke(CreateBrandCommand $findBrandsQuery)
+    public function create(Brand $brand)
     {
-        $brand = $this->mapper->map($findBrandsQuery, Brand::class);
+        $this->brandRepository->persist($brand);
 
-        $this->brandService->create($brand);
+        $brandCreatedEvent = BrandCreatedEvent::create("uuid");
+        // $this->eventBus->dispatch($brandCreatedEvent);
+
+        $this->logger->info('New brand created', [
+            'uuid' => $brand->getUuid(),
+            'name' => $brand->getName()
+        ]);
     }
 }

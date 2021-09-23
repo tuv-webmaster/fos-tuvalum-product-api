@@ -36,8 +36,8 @@ build:
 	docker-compose build
 
 php-install:
-# 	docker-compose exec php-fpm composer install --prefer-dist && bin/phpunit install
-#	docker-compose exec php-fpm bin/console doctrine:migrations:migrate --no-interaction
+	docker-compose exec php-fpm composer install --prefer-dist && bin/phpunit install
+	docker-compose exec php-fpm bin/console doctrine:migrations:migrate --no-interaction
 	docker-compose exec php-fpm /usr/bin/make jwt-rsa
 
 install: build upd php-install stop

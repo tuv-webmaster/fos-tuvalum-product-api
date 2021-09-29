@@ -37,10 +37,10 @@ build:
 
 php-install:
 	docker-compose exec php-fpm composer install --prefer-dist && bin/phpunit install
-	docker-compose exec php-fpm bin/console doctrine:migrations:migrate --no-interaction
+	# docker-compose exec php-fpm bin/console doctrine:migrations:migrate --no-interaction
 	docker-compose exec php-fpm /usr/bin/make jwt-rsa
 
-install: build upd php-install stop
+install: build startf php-install stop
 
 ssl-self-signed:
 		docker-compose run --rm nginx openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt

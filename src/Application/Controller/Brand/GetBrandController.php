@@ -47,7 +47,6 @@ class GetBrandController extends AbstractController
         ValidatorInterface $validator
     )
     {
-
         $this->commandBus = $commandBus;
         $this->validator = $validator;
         $this->serializer = $serializer;
